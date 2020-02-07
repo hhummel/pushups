@@ -72,7 +72,7 @@ def test_bfs():
     g.add_edge(0, 2)
     g.add_edge(0, 3)
 
-    assert g.dfs() == ['0', '1', '2', '3']
+    assert g.bfs() == ['0', '1', '2', '3']
 
     g = Graph()
     g.add_vertex(0)
