@@ -27,3 +27,19 @@ def test_delete():
     data.sort(reverse=True)
 
     assert result == data
+
+def test_sort():
+    from random import shuffle
+    from heap import Heap
+    MAX_DATA = 100000
+
+    heap = Heap()
+
+    data = [x for x in range(MAX_DATA)]
+    shuffle(data)
+
+    result = heap.sort(data)
+    data.sort(reverse=True)
+
+    assert result == data
+

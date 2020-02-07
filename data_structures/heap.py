@@ -17,6 +17,12 @@ class Heap(object):
             self.trickle_down(0)
         return top 
 
+    def sort(self, list_):
+        self.array = []
+        for element in list_:
+            self.insert(element)
+        return [self.delete() for _ in range(len(list_))]
+
     def trickle_up(self, index):
         parent = (index - 1) // 2
         if parent >= 0 and self.array[index] > self.array[parent]:
