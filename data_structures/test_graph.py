@@ -1,5 +1,5 @@
 def test_vertex():
-    from undirected_graph import Graph
+    from non_directed_graph import Graph
 
     g = Graph()
     g.add_vertex(0)
@@ -12,7 +12,7 @@ def test_vertex():
     assert len(g.edges[0]) == 4
 
 def test_edges():
-    from undirected_graph import Graph
+    from non_directed_graph import Graph
 
     g = Graph()
     g.add_vertex(0)
@@ -28,7 +28,7 @@ def test_edges():
     assert g.edges == [[0, 1, 1, 1], [1, 0, 0, 0], [1, 0, 0, 0], [1, 0, 0, 0]]
 
 def test_dfs():
-    from undirected_graph import Graph
+    from non_directed_graph import Graph
     g = Graph()
     g.add_vertex(0)
     g.add_vertex(1)
@@ -61,7 +61,7 @@ def test_dfs():
 
 
 def test_bfs():
-    from undirected_graph import Graph
+    from non_directed_graph import Graph
     g = Graph()
     g.add_vertex(0)
     g.add_vertex(1)
