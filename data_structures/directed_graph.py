@@ -27,12 +27,12 @@ class Graph(object):
         result = [x for x in self.edges[index] if x != 0]
         return result == []
 
-    def add_edge(self, start, end):
+    def add_edge(self, start, end, weight=1):
         l = len(self.edges)
         if 0 < start >= l or 0 < end >= l:
             print("Add edge error")
         else:
-            self.edges[start][end] = 1
+            self.edges[start][end] = weight
 
     def find_next_adjacent(self, index):
         for vert_index, value in enumerate(self.edges[index]):
