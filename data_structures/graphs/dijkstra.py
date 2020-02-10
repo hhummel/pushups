@@ -1,5 +1,5 @@
-from object_heap import Heap
-from non_directed_graph import Graph
+from heaps.object_heap import Heap
+from graphs.non_directed_graph import Graph
 
 class Candidate(object):
     '''Candidate for inclusion in MST. Value is weight in graph'''

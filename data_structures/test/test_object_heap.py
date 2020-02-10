@@ -3,7 +3,7 @@ class Thing:
         self.value = value
 
 def test_insert():
-    from object_heap import Heap
+    from heaps.object_heap import Heap
     heap = Heap()
 
     for i in range(10):
@@ -13,7 +13,7 @@ def test_insert():
 
 def test_delete():
     from random import shuffle
-    from object_heap import Heap
+    from heaps.object_heap import Heap
     MAX_DATA = 100000
 
     heap = Heap()
@@ -33,7 +33,7 @@ def test_delete():
 
 def test_sort():
     from random import shuffle
-    from object_heap import Heap
+    from heaps.object_heap import Heap
     MAX_DATA = 100000
 
     heap = Heap()

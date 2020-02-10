@@ -1,6 +1,6 @@
 
 def test_insert():
-    from heap import Heap
+    from heaps.heap import Heap
     heap = Heap()
 
     for i in range(10):
@@ -10,7 +10,7 @@ def test_insert():
 
 def test_delete():
     from random import shuffle
-    from heap import Heap
+    from heaps.heap import Heap
     MAX_DATA = 100000
 
     heap = Heap()
@@ -30,7 +30,7 @@ def test_delete():
 
 def test_sort():
     from random import shuffle
-    from heap import Heap
+    from heaps.heap import Heap
     MAX_DATA = 100000
 
     heap = Heap()
