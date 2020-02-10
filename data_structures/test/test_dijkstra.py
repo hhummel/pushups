@@ -1,5 +1,5 @@
 def test_get_paths():
-    from  dijkstra import Dijkstra
+    from  graphs.dijkstra import Dijkstra
 
     dijkstra = Dijkstra()
 
@@ -29,7 +29,7 @@ def test_get_paths():
     assert result_0 == [(0, 0), (0, 10), (0, 20), (0, 30), (5, 45), (2, 40), (2, 80)]
 
 def test_get_isolated_paths():
-    from  dijkstra import Dijkstra
+    from  graphs.dijkstra import Dijkstra
 
     dijkstra = Dijkstra()
 

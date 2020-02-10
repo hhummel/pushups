@@ -1,5 +1,5 @@
 def test_vertex():
-    from directed_graph import Graph
+    from graphs.directed_graph import Graph
 
     g = Graph()
     g.add_vertex(0)
@@ -12,7 +12,7 @@ def test_vertex():
     assert len(g.edges[0]) == 4
 
 def test_edges():
-    from directed_graph import Graph
+    from graphs.directed_graph import Graph
 
     g = Graph()
     g.add_vertex(0)
@@ -28,7 +28,7 @@ def test_edges():
     assert g.edges == [[0, 1, 1, 1], [0, 0, 0, 0], [0, 0, 0, 0], [0, 0, 0, 0]]
 
 def test_dfs():
-    from directed_graph import Graph
+    from graphs.directed_graph import Graph
     g = Graph()
     g.add_vertex(0)
     g.add_vertex(1)
@@ -60,7 +60,7 @@ def test_dfs():
     assert g.dfs() == ['0', '1', '3', '4', '2']
 
 def test_bfs():
-    from directed_graph import Graph
+    from graphs.directed_graph import Graph
     g = Graph()
     g.add_vertex(0)
     g.add_vertex(1)
@@ -93,7 +93,7 @@ def test_bfs():
 
 
 def test_delete():
-    from directed_graph import Graph
+    from graphs.directed_graph import Graph
     g = Graph()
     g.add_vertex(0)
     g.add_vertex(1)

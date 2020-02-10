@@ -1,5 +1,5 @@
 def test_mst():
-    from  weighted_mst import MinSpanTree
+    from  graphs.weighted_mst import MinSpanTree
 
     mstree = MinSpanTree()
 
