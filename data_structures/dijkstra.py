@@ -51,11 +51,14 @@ class Dijkstra(object):
 
             #Find the best, update paths table and vertex_list
             best = self.heap.delete()
-            vertex_list[best.end] = False
-            if not paths[end] or paths[end].value > best.value:
-                paths[best.end] = PathEntry(best.start, best.value)
+            if best:
+                vertex_list[best.end] = False
+                if not paths[end] or paths[end].value > best.value:
+                    paths[best.end] = PathEntry(best.start, best.value)
+            else:
+                vertex_list = [False for x in vertex_list]
 
         self.paths = paths
 
     def show_paths(self):
-        return [(x.parent, x. value) for x in self.paths]
+        return [(x.parent, x. value) for x in self.paths if x]
