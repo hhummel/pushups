@@ -26,7 +26,7 @@ class MinSpanTree(object):
             return None
 
         #Put start vertex into result. Mark it in vertex_list. Put candidate edges into heap.
-        self.result.append((start, None))
+        self.result = [((None, start), 0)]
         vertex_list[start] = None
         for end, value in enumerate(self.graph.edges[start]):
             if value:
@@ -45,7 +45,7 @@ class MinSpanTree(object):
                 vertex_list[start] = None
 
                 #Add vertex (index, value_from_prev) to result
-                self.result.append((start, candidate.value))
+                self.result.append(((candidate.start, start), candidate.value))
 
                 #Push new candidate edges onto heap if edge weight != 0 and not already included
                 print([x is None for x in vertex_list])

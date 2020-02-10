@@ -22,7 +22,11 @@ def test_mst():
     mstree.graph.add_edge(3, 4, 60)
     mstree.graph.add_edge(3, 5, 10)
     mstree.graph.add_edge(4, 5, 50)
+    result_0 = mstree.mst(0)
+    assert result_0 == [((None, 0), 0), ((0, 1), 10), ((1, 2), 10), ((2, 5), 20), ((5, 3), 10), ((5, 4), 50)]
 
-    result = mstree.mst(0)
+    result_5 = mstree.mst(5)
+    assert result_5 == [((None, 5), 0), ((5, 3), 10), ((5, 2), 20), ((2, 1), 10), ((1, 0), 10), ((2, 4), 50)]
 
-    assert result == [((None, 0), None), ((0, 1), 10), ((1, 2), 10), ((2, 5), 20), ((5, 3), 10), ((5, 4), 50)]
+    assert sum([x[1] for x in result_0]) == sum([x[1] for x in result_5])
+
