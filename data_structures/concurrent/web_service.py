@@ -1,8 +1,10 @@
 import time, threading, queue, random
 
 class Item():
-    def __init__(self, message):
+    def __init__(self, message, key=None):
         self.message = message
+        self.key = key
+        self.history = []
 
     def __str__(self):
         return f"Item message: {self.message}"
@@ -14,42 +16,33 @@ class Service():
         self.num_threads = num_threads
         self.threads = []
         self.start_queue()
+        self.key = 1
+        self.choices = {
+            "A": ["B", "C", None],
+            "B": ["C", "A", None],
+            "C": ["A", "B", None],
+        }
 
-    def do_task_A(self, item, sec=2):
-        print(f"do_task received message: {item.message} queue size: {self.queue.qsize()}")
+    def do_task(self, label, item, sec=2):
+        print(f"do_task received message: {item.message} id: {item.key} queue size: {self.queue.qsize()}")
         print(f"do_task sleep: {sec}")
         time.sleep(sec)
-        num = random.random()
-        if 0 < num <= 0.3:
-            self.queue.put(Item("B"))
-        elif 0.3 < num < 0.7:
-            self.queue.put(Item("C"))
+        choice = random.choice(self.choices[label])
+        if choice:
+            item.message = choice
+            item.history.append(choice)
+            self.submit_item(item)
         else:
-            print("Done")
+            print(f"Done id: {item.key} history: {item.history}")
+
+    def do_task_A(self, item):
+        self.do_task("A", item)
 
     def do_task_B(self, item, sec=2):
-        print(f"do_task received message: {item.message} queue size: {self.queue.qsize()}")
-        print(f"do_task sleep: {sec}")
-        time.sleep(sec)
-        num = random.random()
-        if 0 < num <= 0.3:
-            self.queue.put(Item("C"))
-        elif 0.3 < num < 0.7:
-            self.queue.put(Item("A"))
-        else:
-            print("Done")
+        self.do_task("B", item)
 
     def do_task_C(self, item, sec=2):
-        print(f"do_task received message: {item.message} queue size: {self.queue.qsize()}")
-        print(f"do_task sleep: {sec}")
-        time.sleep(sec)
-        num = random.random()
-        if 0 < num <= 0.3:
-            self.queue.put(Item("B"))
-        elif 0.3 < num < 0.7:
-            self.queue.put(Item("A"))
-        else:
-            print("Done")
+        self.do_task("C", item)
 
     def worker(self):
         while True:
@@ -77,5 +70,10 @@ class Service():
             self.submit(None)
         
     def submit(self, message):
-        self.queue.put(Item(message))
-        #self.queue.join()
+        item = Item(message, self.key)
+        self.key += 1
+        item.history.append(message)
+        self.queue.put(item)
+        
+    def submit_item(self, item):
+        self.queue.put(item)
